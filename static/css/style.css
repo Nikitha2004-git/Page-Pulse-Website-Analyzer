@@ -1,0 +1,410 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:linear-gradient(135deg,#0f172a,#1e3a8a,#312e81);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:30px;
+}
+
+.container{
+
+    width:100%;
+    max-width:1100px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(12px);
+
+    border-radius:20px;
+
+    padding:35px;
+
+    color:white;
+
+    box-shadow:0 20px 40px rgba(0,0,0,.35);
+
+}
+
+h1{
+
+    text-align:center;
+
+    font-size:42px;
+
+    margin-bottom:10px;
+
+}
+
+.subtitle{
+
+    text-align:center;
+
+    color:#d1d5db;
+
+    margin-bottom:30px;
+
+}
+
+.input-group{
+
+    display:flex;
+
+    gap:15px;
+
+}
+
+input{
+
+    flex:1;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:10px;
+
+    font-size:16px;
+
+}
+
+button{
+
+    background:#2563eb;
+
+    color:white;
+
+    border:none;
+
+    padding:16px 28px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+button:hover{
+
+    background:#1d4ed8;
+
+    transform:translateY(-2px);
+
+}
+
+.loading{
+
+    display:none;
+
+    text-align:center;
+
+    margin-top:25px;
+
+}
+
+.spinner{
+
+    width:45px;
+
+    height:45px;
+
+    border:5px solid rgba(255,255,255,.2);
+
+    border-top:5px solid white;
+
+    border-radius:50%;
+
+    margin:auto;
+
+    animation:spin 1s linear infinite;
+
+}
+
+@keyframes spin{
+
+    100%{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+.results{
+
+    margin-top:35px;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+    gap:18px;
+
+}
+
+.card{
+
+    background:rgba(255,255,255,.12);
+
+    border-radius:15px;
+
+    padding:20px;
+
+    transition:.3s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-5px);
+
+}
+
+.card h3{
+
+    color:#7dd3fc;
+
+    margin-bottom:8px;
+
+}
+
+.card p{
+
+    color:white;
+
+    word-break:break-word;
+
+}
+
+#error{
+
+    display:none;
+
+    margin-top:20px;
+
+    background:#dc2626;
+
+    padding:15px;
+
+    border-radius:10px;
+
+}
+
+#copyBtn{
+
+    display:none;
+
+    margin-top:25px;
+
+}
+
+footer{
+
+    margin-top:40px;
+
+    text-align:center;
+
+    color:#cbd5e1;
+
+    font-size:14px;
+
+}
+
+@media(max-width:700px){
+
+.input-group{
+
+flex-direction:column;
+
+}
+
+button{
+
+width:100%;
+
+}
+
+}
+
+/* ---------------- STATUS BADGES ---------------- */
+
+.badge{
+    display:inline-block;
+    padding:8px 14px;
+    border-radius:20px;
+    font-weight:bold;
+    color:white;
+    font-size:14px;
+}
+
+.success{
+    background:#16a34a;
+}
+
+.redirect{
+    background:#2563eb;
+}
+
+.client-error{
+    background:#f97316;
+}
+
+.server-error{
+    background:#dc2626;
+}
+
+.unknown{
+    background:#64748b;
+}
+.title-box{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+/* ---------------- HISTORY ---------------- */
+
+.history-card{
+
+    margin-top:30px;
+
+    background:#fff;
+
+    border-radius:12px;
+
+    padding:20px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+}
+
+.history-card h2{
+
+    margin-bottom:15px;
+
+}
+
+#historyList{
+
+    list-style:none;
+
+    padding:0;
+
+}
+
+#historyList li{
+
+    padding:10px;
+
+    border-bottom:1px solid #eee;
+
+}
+
+#historyList li:last-child{
+
+    border-bottom:none;
+
+}
+
+/* Download Button */
+
+#downloadPdf{
+
+    padding:12px 24px;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:#2563eb;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+}
+
+#downloadPdf:hover{
+
+    background:#1d4ed8;
+
+}
+/* ---------- DARK MODE ---------- */
+
+.dark{
+
+    background:#121212;
+
+    color:white;
+
+}
+
+.dark .container{
+
+    background:#1e1e1e;
+
+}
+
+.dark .card{
+
+    background:#2b2b2b;
+
+    color:white;
+
+}
+
+.dark .history-card{
+
+    background:#2b2b2b;
+
+}
+
+.dark input{
+
+    background:#333;
+
+    color:white;
+
+    border:1px solid #555;
+
+}
+
+.dark footer{
+
+    color:#ddd;
+
+}
+.grade{
+    font-size:28px;
+    font-weight:bold;
+}
+
+.gradeA{
+    color:#16a34a;
+}
+
+.gradeB{
+    color:#22c55e;
+}
+
+.gradeC{
+    color:#eab308;
+}
+
+.gradeD{
+    color:#f97316;
+}
+
+.gradeF{
+    color:#dc2626;
+}

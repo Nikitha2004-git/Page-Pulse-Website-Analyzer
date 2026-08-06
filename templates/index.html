@@ -1,0 +1,199 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Pulse</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🚀 Page Pulse</h1>
+
+    <p class="subtitle">
+        Analyze any webpage instantly.
+    </p>
+
+    <div class="input-group">
+
+        <input
+            type="text"
+            id="url"
+            placeholder="https://example.com">
+
+        <button onclick="analyzeWebsite()">
+            Analyze
+        </button>
+
+        <button id="themeBtn" onclick="toggleTheme()">
+            🌙 Dark Mode
+        </button>
+
+    </div>
+
+    <!-- Loading -->
+
+    <div id="loading" class="loading">
+
+        <div class="spinner"></div>
+
+        <br>
+
+        <p>Analyzing Website...</p>
+
+    </div>
+
+    <!-- Error -->
+
+    <div id="error"></div>
+
+    <!-- Results -->
+
+    <div class="results">
+
+        <!-- SEO Score -->
+
+        <div class="card">
+            <h3>SEO Score</h3>
+            <p id="seo">-</p>
+        </div>
+
+        <div class="card">
+            <h3>Performance Grade</h3>
+            <p id="grade">-</p>
+        </div>
+
+        <!-- Status -->
+
+        <div class="card">
+            <h3>Status</h3>
+            <p>
+                <span id="statusBadge">-</span>
+            </p>
+        </div>
+
+        <!-- Response Time -->
+
+        <div class="card">
+            <h3>Response Time</h3>
+            <p id="time">-</p>
+        </div>
+
+        <!-- Page Title + Favicon -->
+
+        <div class="card">
+
+            <h3>Page Title</h3>
+
+            <div class="title-box">
+
+                <img
+                    id="favicon"
+                    src=""
+                    alt="Favicon"
+                    width="28"
+                    height="28"
+                    style="display:none; border-radius:4px;">
+
+                <span id="title">-</span>
+
+            </div>
+
+        </div>
+
+        <!-- Meta -->
+
+        <div class="card">
+            <h3>Meta Description</h3>
+            <p id="meta">-</p>
+        </div>
+
+        <!-- H1 -->
+
+        <div class="card">
+            <h3>H1 Count</h3>
+            <p id="h1">-</p>
+        </div>
+
+        <!-- ALT -->
+
+        <div class="card">
+            <h3>Images Missing ALT</h3>
+            <p id="alt">-</p>
+        </div>
+
+        <!-- Words -->
+
+        <div class="card">
+            <h3>Word Count</h3>
+            <p id="words">-</p>
+        </div>
+
+        <!-- Images -->
+
+        <div class="card">
+            <h3>Total Images</h3>
+            <p id="images">-</p>
+        </div>
+
+        <!-- Links -->
+
+        <div class="card">
+            <h3>Total Links</h3>
+            <p id="links">-</p>
+        </div>
+
+    </div>
+
+    <!-- Recent Analysis -->
+
+    <div class="history-card">
+
+        <h2>📜 Recent Analyses</h2>
+
+        <ul id="historyList">
+
+            <li>No analyses yet.</li>
+
+        </ul>
+
+    </div>
+
+    <!-- Download PDF -->
+
+    <div style="text-align:center;margin-top:20px;">
+
+        <button id="downloadPdf">
+            Download PDF Report
+        </button>
+
+    </div>
+
+    <!-- Copy Button -->
+
+    <div style="text-align:center; margin-top:25px;">
+
+        <button id="copyBtn">
+            Copy JSON
+        </button>
+
+    </div>
+
+    <footer>
+        Built for Digital Heroes Internship Task
+    </footer>
+
+</div>
+
+<script src="{% static 'js/script.js' %}"></script>
+
+</body>
+
+</html>
