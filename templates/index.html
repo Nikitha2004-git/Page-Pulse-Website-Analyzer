@@ -168,11 +168,15 @@
 
     <!-- Download PDF -->
 
-    <div style="text-align:center;margin-top:20px;">
+    <div style="text-align:center; margin-top:20px;">
 
-        <button id="downloadPdf">
-            Download PDF Report
-        </button>
+        <a href="{% url 'download_report' %}" target="_blank">
+
+            <button id="downloadPdf">
+            📄 Download PDF Report
+            </button>
+
+        </a>
 
     </div>
 

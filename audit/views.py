@@ -1,3 +1,6 @@
+from django.http import HttpResponse
+from reportlab.platypus import SimpleDocTemplate, Paragraph
+from reportlab.lib.styles import getSampleStyleSheet
 from urllib.parse import urlparse
 import time
 import requests
@@ -185,6 +188,24 @@ def analyze_url(request):
             total_images=len(images),
         )
 
+        # ---------- Save Report in Session ----------
+
+        request.session["report"] = {
+            "url": url,
+            "status": response.status_code,
+            "response_time": f"{response_time} sec",
+            "title": title,
+            "meta_description": meta_description,
+            "h1_count": h1_count,
+            "images_missing_alt": missing_alt,
+            "word_count": len(words),
+            "total_images": len(images),
+            "total_links": len(links),
+            "seo_score": seo_score,
+            "grade": grade,
+            "favicon": favicon,
+        }
+
         return Response(
             {
                 "status": response.status_code,
@@ -219,3 +240,37 @@ def analyze_url(request):
             {"error": str(e)},
             status=status.HTTP_500_INTERNAL_SERVER_ERROR,
         )
+
+def download_report(request):
+    response = HttpResponse(content_type="application/pdf")
+    response["Content-Disposition"] = 'attachment; filename="PagePulse_Report.pdf"'
+
+    doc = SimpleDocTemplate(response)
+    styles = getSampleStyleSheet()
+
+    story = []
+
+    story.append(
+        Paragraph("Page Pulse Website Analysis Report", styles["Title"])
+    )
+
+    story.append(Paragraph("<br/>", styles["Normal"]))
+
+    report = request.session.get("report")
+
+    if not report:
+        story.append(
+            Paragraph("No analysis available.", styles["Normal"])
+        )
+    else:
+        for key, value in report.items():
+            story.append(
+                Paragraph(
+                    f"<b>{key.replace('_', ' ').title()}:</b> {value}",
+                    styles["Normal"],
+                )
+            )
+
+    doc.build(story)
+
+    return response
